@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using PlayerMonitor.DataAccess;
+using PlayerMonitor.DataAccess.Interfaces;
 
 namespace PlayerMonitor.DataAccess.Migrations
 {
-    [DbContext(typeof(PlayerMonitorDbContext))]
+    [DbContext(typeof(BaseApplicationDbContext))]
     [Migration("20161221103218_AddedSessionTable")]
     partial class AddedSessionTable
     {

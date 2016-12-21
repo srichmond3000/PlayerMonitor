@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using PlayerMonitor.DataAccess.Interfaces;
 
 namespace PlayerMonitor.DataAccess.Migrations
 {
-    [DbContext(typeof(PlayerMonitorDbContext))]
+    [DbContext(typeof(BaseApplicationDbContext))]
     partial class PlayerMonitorContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
