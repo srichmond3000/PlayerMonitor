@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Data.Migrations
+namespace PlayerMonitor.DataAccess.Migrations
 {
     public partial class AddedSessionTable : Migration
     {

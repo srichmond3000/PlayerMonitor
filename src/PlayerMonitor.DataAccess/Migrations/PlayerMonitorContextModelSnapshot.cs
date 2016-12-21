@@ -3,15 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Data;
 
-namespace Data.Migrations
+namespace PlayerMonitor.DataAccess.Migrations
 {
     [DbContext(typeof(PlayerMonitorDbContext))]
-    [Migration("20161221103218_AddedSessionTable")]
-    partial class AddedSessionTable
+    partial class PlayerMonitorContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")

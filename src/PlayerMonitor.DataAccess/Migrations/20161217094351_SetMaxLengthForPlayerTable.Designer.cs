@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Data;
+using PlayerMonitor.DataAccess;
 
-namespace Data.Migrations
+namespace PlayerMonitor.DataAccess.Migrations
 {
     [DbContext(typeof(PlayerMonitorDbContext))]
     [Migration("20161217094351_SetMaxLengthForPlayerTable")]

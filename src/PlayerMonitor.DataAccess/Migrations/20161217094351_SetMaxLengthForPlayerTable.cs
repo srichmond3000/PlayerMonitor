@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Data.Migrations
+namespace PlayerMonitor.DataAccess.Migrations
 {
     public partial class SetMaxLengthForPlayerTable : Migration
     {

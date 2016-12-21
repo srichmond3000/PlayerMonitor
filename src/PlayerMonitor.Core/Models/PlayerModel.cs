@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Data.Models
+namespace PlayerMonitor.Core
 {
     public class PlayerModel
     {
