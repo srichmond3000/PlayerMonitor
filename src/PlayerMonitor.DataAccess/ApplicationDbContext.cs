@@ -1,21 +1,15 @@
 ﻿using PlayerMonitor.Core;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PlayerMonitor.DataAccess.Interfaces;
 
 namespace PlayerMonitor.DataAccess
 {
-    public class PlayerMonitorDbContext : DbContext
+    public class ApplicationDbContext : BaseApplicationDbContext
     {
-        public PlayerMonitorDbContext (DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+            
         }
-
-        public DbSet<PlayerModel> Players { get; set; }
-        public DbSet<SessionModel> Sessions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,5 +31,4 @@ namespace PlayerMonitor.DataAccess
             base.OnModelCreating(modelBuilder);
         }
     }
-
 }

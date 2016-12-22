@@ -23,5 +23,19 @@ namespace WebApplication1.Controllers
         {
             return View(_unitOfWork.Players.GetAllPlayers());
         }
+
+        public IActionResult Edit()
+        {
+            return new EmptyResult();
+        }
+
+        public IActionResult Delete()
+        {
+            return new EmptyResult();
+        }
+
+        {
+            return new EmptyResult();
+        }
     }
 }
