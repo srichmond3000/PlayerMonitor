@@ -6,7 +6,7 @@ using PlayerMonitor.DataAccess.Interfaces;
 using PlayerMonitor.Core;
 using PlayerMonitor.Core.RepositoryInterfaces;
 
-namespace Data
+namespace PlayerMonitor
 {
     public class UnitOfWork : IUnitOfWork
     {

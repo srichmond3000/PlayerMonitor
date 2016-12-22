@@ -6,7 +6,7 @@ using PlayerMonitor.Core.RepositoryInterfaces;
 using PlayerMonitor.DataAccess;
 using PlayerMonitor.DataAccess.Interfaces;
 
-namespace Data.Repositories
+namespace PlayerMonitor.DataAccess.Repositories
 {
     public class SessionRepository : ISessionRepository
     {

@@ -10,7 +10,7 @@ namespace PlayerMonitor.DataAccess.Interfaces
             
         }
 
-        DbSet<PlayerModel> Players { get; set; }
-        DbSet<SessionModel> Sessions { get; set; }
+        public DbSet<PlayerModel> Players { get; set; }
+        public DbSet<SessionModel> Sessions { get; set; }
     }
 }

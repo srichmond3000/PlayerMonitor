@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PlayerMonitor.Core.RepositoryInterfaces;
+using PlayerMonitor.DataAccess;
+using PlayerMonitor.DataAccess.Interfaces;
+using PlayerMonitor.DataAccess.Repositories;
 
 namespace PlayerMonitor.Web
 {
@@ -25,10 +32,26 @@ namespace PlayerMonitor.Web
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(
+                options =>
+                    options.UseSqlServer(
+                        "Server=WIN-08KTV2JGCK2\\SQLEXPRESS;Trusted_Connection=True;MultipleActiveResultSets=true;Database=PlayerMonitorTest"));
+            
+            services.AddSingleton<IPlayerRepository, PlayerRepository>();
+            services.AddSingleton<ISessionRepository, SessionRepository>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            
             // Add framework services.
             services.AddMvc();
+
+            var builder = new ContainerBuilder();
+            builder.RegisterType<ApplicationDbContext>().As<BaseApplicationDbContext>();
+            builder.Populate(services);
+            var container = builder.Build();
+
+            return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
