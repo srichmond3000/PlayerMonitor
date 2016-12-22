@@ -6,11 +6,18 @@
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Players</h2>
 
-<ul>
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>First Name</th>
+        <th>Surname</th>
+    </tr>
     @foreach (var player in Model)
     {
-        <li>@player.Forename @player.Surname</li>
+        <tr>
+            <td>@player.Forename</td>
+            <td>@player.Surname</td>
+        </tr>
     }
-</ul>
+</table>
