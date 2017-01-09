@@ -1,0 +1,20 @@
+﻿@model PlayerMonitor.Web.ViewModels.PlayerFormViewModel
+
+@{
+    ViewData["Title"] = "Add Player";
+}
+
+<h1>@Model.Heading</h1>
+
+<form asp-controller="Players" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Forename"></label>
+        <input asp-for="Forename" class="form-control" autofocus="autofocus"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname"></label>
+        <input asp-for="Surname" class="form-control"/>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -9,6 +9,7 @@ using PlayerMonitor.Core;
 using PlayerMonitor.Core.RepositoryInterfaces;
 using Microsoft.AspNetCore.Http;
 using NuGet.Protocol.Core.v3;
+using PlayerMonitor.Web.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -32,7 +33,16 @@ namespace WebApplication1.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            var viewModel = new PlayerFormViewModel() {Heading = "Add Player"};
+
+            return View("PlayerForm", viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Add(PlayerFormViewModel viewModel)
+        {
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit()
