@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using PlayerMonitor.Core;
 using PlayerMonitor.Core.RepositoryInterfaces;
+using Microsoft.AspNetCore.Http;
+using NuGet.Protocol.Core.v3;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,15 +17,22 @@ namespace WebApplication1.Controllers
     public class PlayersController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public PlayersController(IUnitOfWork unitOfWork)
+        public PlayersController(IUnitOfWork unitOfWork, IHostingEnvironment hostingEnvironment)
         {
-            _unitOfWork = unitOfWork; 
+            _unitOfWork = unitOfWork;
+            _hostingEnvironment = hostingEnvironment;
         }
         
         public IActionResult Index()
         {
             return View(_unitOfWork.Players.GetAllPlayers());
+        }
+
+        public IActionResult Add()
+        {
+            return View();
         }
 
         public IActionResult Edit()
@@ -34,8 +45,29 @@ namespace WebApplication1.Controllers
             return new EmptyResult();
         }
 
+        public ViewResult Upload()
         {
-            return new EmptyResult();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Upload(IFormFile file)
+        {
+            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+
+            if (file == null || file.Length == 0)
+                return View();
+
+            var buffer = new byte[file.Length];
+
+            using (var stream = file.OpenReadStream())
+            {
+                stream.Read(buffer, 0, (int)file.Length);
+            }
+
+            var text = System.Text.Encoding.UTF8.GetString(buffer);
+
+           return View();
         }
     }
 }
